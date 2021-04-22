@@ -1,5 +1,5 @@
 {
-  "name": "@graphql-api/file-system-access",
+  "name": "@graphql-local/file-system-access",
   "version": "0.0.1",
   "dependencies": {},
   "peerDependencies": {
