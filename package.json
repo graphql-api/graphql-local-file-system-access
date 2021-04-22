@@ -1,0 +1,10 @@
+{
+  "name": "@graphql-api/file-system-access",
+  "version": "0.0.1",
+  "dependencies": {},
+  "peerDependencies": {
+    "dexie": "^3",
+    "graphql": "^15",
+    "@apollo/client": "^3"
+  }
+}
