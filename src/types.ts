@@ -14,8 +14,8 @@ export interface FileSystemDirectoryHandle extends __FileSystemHandle {
   name: string
   kind: 'directory'
   keys()
-  resolve()
-  values(): Iterable<FileSystemHandle>
+  resolve(handle: FileSystemHandle): [] | null | [string] | string[]
+  values?(): Iterable<FileSystemHandle>
   removeEntry()
   getFileHandle()
   getDirectoryHandle()

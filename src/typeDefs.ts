@@ -5,7 +5,7 @@ export const typeDefs = gql`
     name: String!
   }
 
-  scalar FileContentt
+  scalar FileContent
 
   type File implements Entry {
     name: String!
@@ -14,10 +14,11 @@ export const typeDefs = gql`
 
   type Directory implements Entry {
     name: String!
+    content: DirectoryContent
   }
 
   type DirectoryContent {
-    edges: EntryEdge
+    edges: [EntryEdge]
   }
 
   type EntryEdge {
@@ -27,11 +28,15 @@ export const typeDefs = gql`
   type Query {
     file(name: String): File
     directory(name: String): Directory
+    directories: [Directory]
   }
 
   type Mutation {
-    createFile(directory: String): File
-    createDirectory(directory: String): Directory
-    permitDirectory: Directory
+    # createFile(path: String): File
+    # updateFile(path: String, content: FileContent): File
+    # deleteFile(path: String): File
+    # createDirectory(directory: String): Directory
+    # deleteDirectory(directory: String): Directory
+    pick: String
   }
 `

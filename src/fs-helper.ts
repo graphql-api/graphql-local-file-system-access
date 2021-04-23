@@ -38,14 +38,33 @@ export function getFileHandle() {
   return window.chooseFileSystemEntries()
 }
 
-export async function getDirectoryHandle(): Promise<FileSystemHandle[]> {
+export async function getDirectoryHandle(): Promise<FileSystemDirectoryHandle> {
   // @ts-ignore
-  const dirHandle: FileSystemDirectoryHandle = await window.showDirectoryPicker()
+  const dirHandle: FileSystemDirectoryHandle = await window?.showDirectoryPicker()
+  return dirHandle
+}
+
+export async function getDirectoryEntries(dirHandle: FileSystemDirectoryHandle) {
   const entries: FileSystemHandle[] = []
+  if (typeof dirHandle['values'] === 'undefined') return entries
   for await (const entry of dirHandle.values()) {
     entries.push(entry)
   }
   return entries
+}
+
+export async function resolveTree(dirHandle: FileSystemDirectoryHandle) {
+  const entries = await getDirectoryEntries(dirHandle)
+  return {
+    name: dirHandle.name,
+    kind: dirHandle.kind,
+    content: await Promise.all(
+      entries.map(async (entry) => {
+        if (entry.kind === 'directory') return await resolveTree(entry)
+        return { kind: entry.kind, name: entry.name }
+      })
+    )
+  }
 }
 
 /**

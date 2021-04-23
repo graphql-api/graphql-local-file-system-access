@@ -1,4 +1,4 @@
 {
-  "presets": [],
+  "presets": ["@nrwl/web/babel"],
   "plugins": []
 }
