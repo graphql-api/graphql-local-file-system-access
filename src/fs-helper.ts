@@ -28,14 +28,14 @@ export function getFileHandle() {
   // For Chrome 86 and later...
   if ('showOpenFilePicker' in window) {
     // @ts-ignore
-    return window.showOpenFilePicker().then((handles) => {
+    return window?.showOpenFilePicker().then((handles) => {
       // console.log('getFileHandle', handles)
       return handles[0]
     })
   }
   // For Chrome 85 and earlier...
   // @ts-ignore
-  return window.chooseFileSystemEntries()
+  return window?.chooseFileSystemEntries()
 }
 
 export async function getDirectoryHandle(): Promise<FileSystemDirectoryHandle> {
@@ -84,7 +84,7 @@ export function getNewFileHandle() {
       ]
     }
     // @ts-ignore
-    return window.showSaveFilePicker(opts)
+    return window?.showSaveFilePicker(opts)
   }
   // For Chrome 85 and earlier...
   const opts = {
@@ -98,7 +98,7 @@ export function getNewFileHandle() {
     ]
   }
   // @ts-ignore
-  return window.chooseFileSystemEntries(opts)
+  return window?.chooseFileSystemEntries(opts)
 }
 
 /**
