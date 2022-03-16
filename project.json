@@ -1,0 +1,42 @@
+{
+  "root": "libs/graphql/file-system-access",
+  "sourceRoot": "libs/graphql/file-system-access/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/graphql/file-system-access/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "options": {
+        "outputPath": "dist/libs/graphql/file-system-access",
+        "tsConfig": "libs/graphql/file-system-access/tsconfig.lib.json",
+        "project": "libs/graphql/file-system-access/package.json",
+        "entryFile": "libs/graphql/file-system-access/src/index.ts",
+        "external": ["react", "react-dom"],
+        "babelConfig": "@nrwl/react/plugins/bundle-babel",
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "assets": [
+          {
+            "glob": "README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/graphql/file-system-access/jest.config.js",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/graphql/file-system-access"]
+    }
+  }
+}
