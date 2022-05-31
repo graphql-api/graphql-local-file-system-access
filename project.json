@@ -37,6 +37,12 @@
         "passWithNoTests": true
       },
       "outputs": ["coverage/libs/graphql/file-system-access"]
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional"
+      }
     }
   }
 }
