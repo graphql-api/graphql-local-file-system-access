@@ -1,5 +1,5 @@
 {
-  "root": "libs/graphql/file-system-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/graphql/file-system-access/src",
   "projectType": "library",
   "generators": {},
@@ -33,7 +33,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "options": {
-        "jestConfig": "libs/graphql/file-system-access/jest.config.js",
+        "jestConfig": "libs/graphql/file-system-access/jest.config.ts",
         "passWithNoTests": true
       },
       "outputs": ["coverage/libs/graphql/file-system-access"]

@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'graphql-file-system-access',
   preset: '../../../jest.preset.js',
   transform: {
